@@ -46,7 +46,7 @@ class TempusDominusMixin:
     pickers offered.
     """
 
-    def __init__(self, attrs=None, options=None, format=None):
+    def __init__(self, attrs=None, options=None):
         super().__init__()
 
         # Set default options to include a clock item, otherwise datetimepicker
@@ -60,7 +60,6 @@ class TempusDominusMixin:
             self.js_options = {**self.js_options, **options}
         # save any additional attributes that the user defined in self
         self.attrs = attrs or {}
-        self.format = format or None
 
     @property
     def media(self):
@@ -160,12 +159,12 @@ class TempusDominusMixin:
         """
         if isinstance(value, str):
             if isinstance(self, DatePicker):
-                formats = [self.format] or get_format("DATE_INPUT_FORMATS")
+                formats = "DATE_INPUT_FORMATS"
             elif isinstance(self, TimePicker):
-                formats = [self.format] or get_format("TIME_INPUT_FORMATS")
+                formats = "TIME_INPUT_FORMATS"
             else:
-                formats = get_format("DATETIME_INPUT_FORMATS")
-            for fmt in formats:
+                formats = "DATETIME_INPUT_FORMATS"
+            for fmt in get_format(formats):
                 try:
                     value = datetime.strptime(value, fmt)
                     break
