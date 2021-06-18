@@ -177,7 +177,7 @@ class TempusDominusMixin:
         iso_date = value.isoformat()
 
         # iso format for time requires a prepended T
-        if isinstance(self, TimePicker):
+        if isinstance(self, TimePicker) and not isinstance(value, datetime):
             iso_date = "T" + iso_date
 
         return {"date": iso_date}
