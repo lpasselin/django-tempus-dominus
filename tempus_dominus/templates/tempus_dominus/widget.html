@@ -18,7 +18,11 @@
 <script type="text/javascript">
     function deferDateTimePicker_{{ picker_id }}() {
         if (window.jQuery && $.fn.datetimepicker) {
-            $('#{{ picker_id }}').datetimepicker({{ js_options }});
+            var js_options = {{ js_options }};
+            if ("date" in js_options){
+              js_options.date = moment(js_options.date);
+            }
+            $('#{{ picker_id }}').datetimepicker();
         } else {
             setTimeout(function() { deferDateTimePicker_{{ picker_id }}() }, 50);
         }
