@@ -181,8 +181,7 @@ class TempusDominusMixin:
             iso_date = "T" + iso_date
         
         string_data = f'moment("{iso_date}")'
-
-        return {"date": iso_date}
+        return {"date": string_data}
 
     def get_js_format(self):
         raise NotImplementedError
