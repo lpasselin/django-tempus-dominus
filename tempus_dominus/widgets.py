@@ -179,6 +179,8 @@ class TempusDominusMixin:
         # iso format for time requires a prepended T
         if isinstance(self, TimePicker) and not isinstance(value, datetime):
             iso_date = "T" + iso_date
+        
+        string_data = f'moment("{iso_date}")'
 
         return {"date": iso_date}
 
