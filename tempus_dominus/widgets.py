@@ -180,8 +180,7 @@ class TempusDominusMixin:
         if isinstance(self, TimePicker) and not isinstance(value, datetime):
             iso_date = "T" + iso_date
         
-        string_data = f'moment("{iso_date}")'
-        return {"date": string_data}
+        return {"date": iso_date}
 
     def get_js_format(self):
         raise NotImplementedError
